@@ -114,3 +114,29 @@ section article p {
 .form-container form table button:hover {
     background-color: greenyellow;
 }
+
+/* Percabangan */
+.calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.calc form {
+    margin: 20px;
+}
+
+.calc-result {
+    background-color: whitesmoke;
+    height: 130px;
+    width: 250px;
+    text-align: justify;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.calc-result p {
+    color: black;
+}

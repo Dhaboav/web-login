@@ -1,0 +1,63 @@
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategori Nilai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="index.php">Penikmat Konten</a>
+        </h1>
+    </header>
+    <nav>
+        <a href="form.php">Link 1</a>
+        <a href="nilai.php" style="color: black;">Link 2</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+        <a href="#">Link 5</a>
+    </nav>
+    <section>
+        <h1>Kategori Nilai</h1>
+        <article class="calc">
+            <form action="" method="get">
+                <input type="number" name="nilai-input" placeholder="Nilai" required>
+                <button type="submit" name="hitung">Hitung</button>
+            </form>
+            <div class="calc-result">
+                <?php
+                if (isset($_GET['hitung'])) {
+                    $nilai = $_GET['nilai-input'];
+                    echo "<p> Nilai: $nilai </p>";
+                    if ($nilai >= 80) {
+                        echo "<p>Kategori: A</p>";
+                    } elseif ($nilai >= 70) {
+                        echo "<p>Kategori: B</p>";
+                    } elseif ($nilai >= 60) {
+                        echo "<p>Kategori: C</p>";
+                    } elseif ($nilai >= 50) {
+                        echo "<p>Kategori: D</p>";
+                    } else {
+                        echo "<p>Kategori: E</p>";
+                    }
+
+                    switch ($nilai) {
+                        case ($nilai >= 70):
+                            echo "<p> Anda Lulus Passing Grade </p>";
+                            break;
+                        default:
+                            echo "<p> Anda Tidak Lulus Passing Grade </p>";
+                            break;
+                    }
+                }
+                ?>
+            </div>
+        </article>
+    </section>
+
+</body>
+
+</html>
