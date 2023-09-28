@@ -29,6 +29,7 @@ nav {
     color: white;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
 
 nav a {
@@ -42,6 +43,20 @@ nav a {
 
 nav a:hover {
     color: black;
+}
+
+nav .logout {
+    position: absolute;
+    bottom: 10px; 
+    left: 0; 
+    width: 100%; 
+    margin-top: 0; 
+    color: black;
+}
+
+nav .logout:hover {
+    background-color: white;
+    color: red;
 }
 
 /* Main content section styling */
