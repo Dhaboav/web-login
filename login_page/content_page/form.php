@@ -34,7 +34,7 @@ if (isset($_GET['logout'])) {
     <nav>
         <a href="form.php" style="color: black;">Link 1</a>
         <a href="nilai.php">Link 2</a>
-        <a href="#">Link 3</a>
+        <a href="perulangan.php">Link 3</a>
         <a href="#">Link 4</a>
         <a href="#">Link 5</a>
         <a href="?logout=1" class="logout">Logout</a>

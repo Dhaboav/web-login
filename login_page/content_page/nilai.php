@@ -34,7 +34,7 @@ if (isset($_GET['logout'])) {
     <nav>
         <a href="form.php">Link 1</a>
         <a href="nilai.php" style="color: black;">Link 2</a>
-        <a href="#">Link 3</a>
+        <a href="perulangan.php">Link 3</a>
         <a href="#">Link 4</a>
         <a href="#">Link 5</a>
         <a href="?logout=1" class="logout">Logout</a>
@@ -49,27 +49,33 @@ if (isset($_GET['logout'])) {
             <div class="calc-result">
                 <?php
                 if (isset($_GET['hitung'])) {
+                    $range = false;
+                    $lulus = false;
                     $nilai = $_GET['nilai-input'];
                     echo "<p> Nilai: $nilai </p>";
-                    if ($nilai >= 80) {
-                        echo "<p>Kategori: A</p>";
-                    } elseif ($nilai >= 70) {
-                        echo "<p>Kategori: B</p>";
-                    } elseif ($nilai >= 60) {
-                        echo "<p>Kategori: C</p>";
-                    } elseif ($nilai >= 50) {
-                        echo "<p>Kategori: D</p>";
-                    } else {
-                        echo "<p>Kategori: E</p>";
-                    }
+                    if ($nilai >= 0 && $nilai <= 100) {
+                        $range = true;
+                        if ($nilai >= 80) {
+                            echo "<p>Kategori: A</p>";
+                            $lulus = true;
+                        } elseif ($nilai >= 70) {
+                            echo "<p>Kategori: B</p>";
+                            $lulus = true;
+                        } elseif ($nilai >= 60) {
+                            echo "<p>Kategori: C</p>";
+                        } elseif ($nilai >= 50) {
+                            echo "<p>Kategori: D</p>";
+                        } else {
+                            echo "<p>Kategori: E</p>";
+                        }
 
-                    switch ($nilai) {
-                        case ($nilai >= 70):
+                        if ($lulus) {
                             echo "<p> Anda Lulus Passing Grade </p>";
-                            break;
-                        default:
+                        } else {
                             echo "<p> Anda Tidak Lulus Passing Grade </p>";
-                            break;
+                        }
+                    } else {
+                        echo "<p>Masukan dari 0-100!</p>";
                     }
                 }
                 ?>
