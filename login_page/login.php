@@ -1,40 +1,33 @@
-<?php
-session_start();
-
-// Cek jika user sudah login dan session login adalah true
-if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
-    header('Location: content_page/index.php'); // Redirect ke dashboard
-    exit; // Akhiri skrip
+<?php session_start();
+if (isset($_SESSION['userID'])) {
+    header('Location: konten/index.php');
+    exit;
 }
+?>
 
-// Definisikan daftar user valid dan kata sandi mereka
-$user_list = [
-    ['username' => 'miko', 'password' => '123'],
-    ['username' => 'admin', 'password' => 'admin']
-];
+<?php
+$link = mysqli_connect('localhost', 'root', '12345678', 'uas');
+if (isset($_POST['login'])) {
+    $user = trim($_POST['userID']);
+    $psw = trim($_POST['password']);
 
-// Cek jika form login telah disubmit
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Dapatkan input user dari form
-    $userID = $_POST['userID'];
-    $password = $_POST['password'];
-
-    // Cek apakah kredensial yang disubmit cocok dengan salah satu user dalam daftar
-    $authenticated = false;
-    foreach ($user_list as $user) {
-        if ($user['username'] === $userID && $user['password'] === $password) {
-            $authenticated = true;
-            $_SESSION['username'] = $userID;
-            $_SESSION['login'] = true;
-            header('Location: content_page/index.php'); // Redirect ke dashboard
-            exit; // Akhiri skrip
+    if ($user == 'admin' or $psw == 'admin') {
+        $_SESSION['userID'] = "Adminstrator";
+        header('Location: konten/index.php');
+        exit;
+    } else {
+        $sql = "SELECT count(*) FROM mahasiswa WHERE nim = '$user' AND nama = '$psw'";
+        $data = mysqli_fetch_row(mysqli_query($link, $sql));
+        if ($data[0] != 0) {
+            $_SESSION['userID'] = "$psw";
+            header('Location: konten/index.php');
+            exit;
+        } else {
+            $_SESSION['error'] = "Invalid username or password";
+            header('Location: login.php?error=1');
+            exit;
         }
     }
-
-    // Jika kredensial tidak cocok, set pesan kesalahan
-    $_SESSION['error'] = 'Invalid username or password';
-    header('Location: login.php?error=1'); // Redirect ke halaman login dengan pesan kesalahan
-    exit; // Akhiri skrip
 }
 ?>
 <html lang="id">
@@ -58,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="post">
             <input type="text" name="userID" placeholder="Username" required><br>
             <input type="password" name="password" placeholder="Password" required><br>
-            <button type="submit">LOGIN</button>
+            <button type="submit" name="login">LOGIN</button>
         </form>
     </div>
 </body>
