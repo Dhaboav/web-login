@@ -47,13 +47,12 @@ Here is the file structure of this repository
 .  
 ├── login_page  
 |   |
-|   ├── content_page
+|   ├── konten
 |   |   |
-|   |   ├── form.php
 |   |   ├── index.php
-|   |   ├── nilai.php
-|   |   ├── style.css
-|   |   └── test.html
+|   |   ├── index.html
+|   |   ├── style.css 
+|   |   └── user.png
 |   │
 |   ├── login.php
 |   └── login.css
@@ -81,7 +80,7 @@ Here is the file structure of this repository
 <!-- Feature -->
 ## Feature
 
-- Simple Login System (Chain session login and logout).
+- Simple Login System (Chain session login and logout) with mySql database.
 - Simple Dashboard
 
 See the [open issues](https://github.com/Dhaboav/web-login/issues) for a full list of proposed features (and known issues).
