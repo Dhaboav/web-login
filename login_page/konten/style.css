@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: blue;
+}
+
+.header h1 {
+    color: aliceblue;
+    margin-left: 10;
+}
+.links {
+    text-align: center; 
+}
+
+.links a {
+    margin: 0 10px; 
+    padding: 5;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.links a:hover  {
+    color: orange;
+}
+.pesan {
+    margin: 20;
+}
+
+.mahasiswa {
+    text-align: center;
+    border-bottom: 5px solid black;
+    border-top: 5px solid black;
+    padding-top: 20;
+    padding-bottom: 20;
+}
+.mahasiswa img {
+    float: left;
+    margin-right: 10px; 
+  }
+
+.mahasiswa tr, td {
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+.mahasiswa p {
+    padding: 5;
+    text-align: left;
+}
+
+.mahasiswa button {
+    margin-top: -7;
+    width: 150;
+    background-color: blue;
+    border-style: none;
+    color: whitesmoke;
+}
