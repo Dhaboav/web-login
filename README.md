@@ -50,8 +50,9 @@ Here is the file structure of this repository
 |   ├── konten
 |   |   |
 |   |   ├── index.php
-|   |   ├── index.html
-|   |   ├── style.css 
+|   |   ├── matkul.php
+|   |   ├── mhs.php
+|   |   ├── style.css
 |   |   └── user.png
 |   │
 |   ├── login.php
