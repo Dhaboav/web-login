@@ -41,6 +41,8 @@ if (isset($_POST['simpan'])) {
 
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mata Kuliah</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -137,61 +139,90 @@ if (isset($_POST['simpan'])) {
         </form>
     </div>";
     } else {
+        if ($userID == 'Adminstrator') {
+            echo "
+            <div class='form_matakuliah'>
+            <form action='matkul.php' method='POST'>
+                <table>
+                    <tr>
+                        <td>Kode</td>
+                        <td><input type='text' name='id-kelas'></td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td><input type='text' name='nama'></td>
+                    </tr>
+                    <tr>
+                        <td>Sks</td>
+                        <td><input type='number' name='sks'></td>
+                    </tr>
+                    <tr>
+                        <td>Dosen</td>
+                        <td><input type='text' name='dosen'></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+            ";
+        }
     ?>
-    <div class="form_matakuliah">
-        <form action="matkul.php" method="POST">
-            <table>
-                <tr>
-                    <td>Kode</td>
-                    <td><input type="text" name='id-kelas'></td>
-                </tr>
-                <tr>
-                    <td>Nama</td>
-                    <td><input type="text" name='nama'></td>
-                </tr>
-                <tr>
-                    <td>Sks</td>
-                    <td><input type="number" name='sks'></td>
-                </tr>
-                <tr>
-                    <td>Dosen</td>
-                    <td><input type="text" name='dosen'></td>
-                </tr>
-                <tr>
-                    <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+    
     <?php
     }
     ?>
     <div class="data_matkul">
         <table>
-            <tr>
-                <th>Kode</th>
-                <th>Nama</th>
-                <th>Sks</th>
-                <th>Dosen</th>
-                <th>Editor</th>
-            </tr>
+            
             <?php
             $sql = "SELECT * FROM mata_kuliah";
             $result = mysqli_query($link, $sql);
+            if ($userID == 'Adminstrator') {
+                echo "
+                <tr>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Sks</th>
+                    <th>Dosen</th>
+                    <th>Editor</th>
+                </tr>
+                ";
+            } else {
+                echo "
+                <tr>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Sks</th>
+                    <th>Dosen</th>
+                </tr>
+                ";
+            }
 
             if ($result) {
                 while ($data = mysqli_fetch_assoc($result)) {
-                    echo "
-                    <tr>
-                        <td>{$data['id_matakuliah']}</td>
-                        <td>{$data['nama_matakuliah']}</td>
-                        <td>{$data['sks']}</td>
-                        <td>{$data['dosen_pengampu']}</td>
-                        <td class='centered_cell'>
-                            <a href='matkul.php?ubah&kode={$data['id_matakuliah']}'>Edit</a>
-                            <a href='matkul.php?hapus&id={$data['id_matakuliah']}'>Delete</a>
-                        </td>
-                    </tr>";
+                    if ($userID == 'Adminstrator') {
+                        echo "
+                        <tr>
+                            <td>{$data['id_matakuliah']}</td>
+                            <td>{$data['nama_matakuliah']}</td>
+                            <td>{$data['sks']}</td>
+                            <td>{$data['dosen_pengampu']}</td>
+                            <td class='centered_cell'>
+                                <a href='matkul.php?ubah&kode={$data['id_matakuliah']}'>Edit</a>
+                                <a href='matkul.php?hapus&id={$data['id_matakuliah']}'>Delete</a>
+                            </td>
+                        </tr>";
+                    } else {
+                        echo "
+                        <tr>
+                            <td>{$data['id_matakuliah']}</td>
+                            <td>{$data['nama_matakuliah']}</td>
+                            <td>{$data['sks']}</td>
+                            <td>{$data['dosen_pengampu']}</td>
+                        </tr>";
+                    } 
                 }
             }
             ?>

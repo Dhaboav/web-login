@@ -41,6 +41,8 @@ if (isset($_POST['simpan'])){
 
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahasiswa</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -139,32 +141,37 @@ if (isset($_POST['simpan'])){
     ";
 
     } else{
+        if ($userID == 'Adminstrator'){
+            echo "
+        <div class='form_mahasiswa'>
+            <form action='mhs.php' method='POST'>
+                <table>
+                    <tr>
+                        <td>NIM</td>
+                        <td><input type='text' name='nim'></td>
+                    </tr>
+                    <tr>
+                        <td>NAMA</td>
+                        <td><input type='text' name='nama'></td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td><input type='text' name='jenis-kelamin'></td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telp</td>
+                        <td><input type='number' name='no-tlp'></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+            ";
+        }
     ?>
-    <div class="form_mahasiswa">
-        <form action="mhs.php" method="POST">
-            <table>
-                <tr>
-                    <td>NIM</td>
-                    <td><input type="text" name='nim'></td>
-                </tr>
-                <tr>
-                    <td>NAMA</td>
-                    <td><input type="text" name='nama'></td>
-                </tr>
-                <tr>
-                    <td>Jenis Kelamin</td>
-                    <td><input type="text" name='jenis-kelamin'></td>
-                </tr>
-                <tr>
-                    <td>Nomor Telp</td>
-                    <td><input type="number" name='no-tlp'></td>
-                </tr>
-                <tr>
-                    <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+    
     <?php
     }
     ?>
@@ -182,18 +189,43 @@ if (isset($_POST['simpan'])){
             $result = mysqli_query($link, $sql);
             if ($result){
                 while ($data = mysqli_fetch_assoc($result)) {
-                    echo "
-                    <tr>
-                        <td>{$data['nim']}</td>
-                        <td>{$data['nama']}</td>
-                        <td>{$data['jenis_kelamin']}</td>
-                        <td>{$data['no_hp']}</td>
-                        <td class='centered_cell'>
-                            <a href='mhs.php?ubah&kode={$data['nim']}'>Edit</a>
-                            <a href='mhs.php?hapus&nim={$data['nim']}'>Delete</a>
-                        </td>
-                    </tr>
-                    ";
+                    if ($userID == 'Adminstrator') {
+                        echo "
+                        <tr>
+                            <td>{$data['nim']}</td>
+                            <td>{$data['nama']}</td>
+                            <td>{$data['jenis_kelamin']}</td>
+                            <td>{$data['no_hp']}</td>
+                            <td class='centered_cell'>
+                                <a href='mhs.php?ubah&kode={$data['nim']}'>Edit</a>
+                                <a href='mhs.php?hapus&nim={$data['nim']}'>Delete</a>
+                            </td>
+                        </tr>";
+
+                    } else{
+                        if($data['nama'] == $userID){
+                            echo "
+                            <tr>
+                                <td>{$data['nim']}</td>
+                                <td>{$data['nama']}</td>
+                                <td>{$data['jenis_kelamin']}</td>
+                                <td>{$data['no_hp']}</td>
+                                <td class='centered_cell'>
+                                    <a href='mhs.php?ubah&kode={$data['nim']}'>Edit</a>
+                                </td>
+                            </tr>";
+                        } else {
+                            echo "
+                            <tr>
+                                <td>{$data['nim']}</td>
+                                <td>{$data['nama']}</td>
+                                <td>{$data['jenis_kelamin']}</td>
+                                <td>{$data['no_hp']}</td>
+                                <td></td>
+                            </tr>";
+                        }
+                        
+                    }
                 }
             }
             ?>
