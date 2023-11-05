@@ -37,9 +37,15 @@ if (isset($_SESSION['userID'])) {
     </div>
 
     <?php
-    $link   = mysqli_connect('localhost', 'root', '12345678', 'uas');
-    $sql    = "SELECT * FROM mahasiswa WHERE nama='$userID'";
-    $data   = mysqli_fetch_row(mysqli_query($link, $sql));
+    $link           = mysqli_connect('localhost', 'root', '12345678', 'uas');
+    $sql            = "SELECT * FROM mahasiswa WHERE nama='$userID'";
+    $sql_matkul     = "SELECT COUNT(id_matakuliah) FROM mata_kuliah";
+    $sql_mahasiswa  = "SELECT COUNT(nim) FROM mahasiswa";
+    $data           = mysqli_fetch_row(mysqli_query($link, $sql));
+    $matkul         = mysqli_fetch_row(mysqli_query($link, $sql_matkul));
+    $mahasiswa      = mysqli_fetch_row(mysqli_query($link, $sql_mahasiswa));
+
+
     echo "
     <div class='pesan'>
         <h3>Selamat Datang, $userID</h3>
@@ -47,6 +53,31 @@ if (isset($_SESSION['userID'])) {
     <div class='mahasiswa'> 
         <img src='user.png' alt='user' width='190'>
         <table>
+    ";
+    if ($userID == 'Adminstrator') {
+        echo "
+            <tr>
+                <td><p>Nama</p></td>
+                <td>:$userID</td>
+            </tr>
+            <tr>
+                <td><p>Jabatan</p></td>
+                <td>:Dosen</td>
+            </tr>
+            <tr>
+                <td><p>Instansi</p></td>
+                <td>:Universitas Tanjungpura</td>
+            </tr>
+            <tr>
+                <td><p>Total Mahasiswa</p></td>
+                <td>:$mahasiswa[0]</td>
+            </tr>
+            <tr>
+                <td><p>Total Matakuliah</p></td>
+                <td>:$matkul[0]</td>
+            </tr>";
+    } else {
+        echo "
             <tr>
                 <td><p>Nama</p></td>
                 <td>:$data[1]</td>
@@ -62,10 +93,12 @@ if (isset($_SESSION['userID'])) {
             <tr>
                 <td><p>Nomor HP</p></td>
                 <td>:$data[3]</td>
-            </tr>  
+            </tr> ";
+    }
+    echo "
         </table>
-    </div>
-    "
+    </div>";
+
     ?>
 </body>
 
