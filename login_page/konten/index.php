@@ -1,28 +1,30 @@
 <?php
 session_start();
 
-if (isset($_GET['logout'])){
+if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
     header('Location: ../login.php');
     exit;
 }
 
-if (isset($_SESSION['userID'])){
+if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
-} else{
+} else {
     header('Location: ../login.php');
     exit;
 }
 ?>
 
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="header">
         <h1>UAS</h1>
@@ -66,4 +68,5 @@ if (isset($_SESSION['userID'])){
     "
     ?>
 </body>
+
 </html>

@@ -4,10 +4,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<h3 align="center">Simple Web Login</h3>
+<h3 align="center">Simple Web Login with MySQL</h3>
 
   <p align="center">
-    This repository is about simple login logout system using php and build in using html and css.
+    This repository is about simple login logout system using php and build in using html and css with MySQL database.
     <br />
     <a href="https://github.com/Dhaboav/web-login"><strong>Explore the docs »</strong></a>
     <br />
@@ -36,7 +36,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This repository is making simple login system that have some feature like chain login session and logout. And create using `HTML`, `CSS`, `PHP`
+This repository is making simple login system that have some feature like chain login session and logout and show table. And create using `HTML`, `CSS`, `PHP` with `MySQL`
+
+Interface sample:
+![Sample Login](img\login.png)
+![Sample Dashboard](img\dashboard.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -45,6 +49,11 @@ This repository is making simple login system that have some feature like chain 
 Here is the file structure of this repository
 ```
 .  
+├── img
+|   |
+|   ├── dashboard.png
+|   └── login.png
+|
 ├── login_page  
 |   |
 |   ├── konten
@@ -66,14 +75,38 @@ Here is the file structure of this repository
 <!-- GETTING STARTED -->
 ### Installation
 1. Clone the repo
-   ```sh
+  ```sh
    git clone https://github.com/Dhaboav/web-login.git
-   ```
+  ```
 
-2. Run in your localhost
-    ```localhost
+2. Create database uas in MySQL
+  ```Prompt
+  CREATE DATABASE uas;
+  ```
+
+3. Create table mahasiswa in database uas
+  ```Prompt
+  CREATE TABLE mahasiswa (
+    nim varchar(11) PRIMARY KEY,
+    nama varchar(50),
+    jenis_kelamin varchar(6),
+    no_hp varchar(13)
+  );
+  ``` 
+4. Create table mata_kuliah in database uas
+  ```Prompt
+  CREATE TABLE mata_kuliah (
+    id_matakuliah varchar(6) PRIMARY KEY,
+    nama_matakuliah varchar(50),
+    sks int(2),
+    dosen_pengampu varchar(50)
+  );
+  ``` 
+
+5. Run in your localhost
+  ```localhost
    http://localhost/web-personal/login_page/login.php
-    ```
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,8 +114,8 @@ Here is the file structure of this repository
 <!-- Feature -->
 ## Feature
 
-- Simple Login System (Chain session login and logout) with mySql database.
-- Simple Dashboard
+- Simple Login System (Chain session login and logout) with MySQL database.
+- Simple Dashboard to show table in database.
 
 See the [open issues](https://github.com/Dhaboav/web-login/issues) for a full list of proposed features (and known issues).
 
