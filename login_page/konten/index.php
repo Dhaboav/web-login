@@ -41,10 +41,18 @@ if (isset($_SESSION['userID'])) {
     $sql            = "SELECT * FROM mahasiswa WHERE nama='$userID'";
     $sql_matkul     = "SELECT COUNT(id_matakuliah) FROM mata_kuliah";
     $sql_mahasiswa  = "SELECT COUNT(nim) FROM mahasiswa";
+    $sql_kelamin    = "SELECT jenis_kelamin, COUNT(*) AS total_count FROM mahasiswa GROUP BY jenis_kelamin";
     $data           = mysqli_fetch_row(mysqli_query($link, $sql));
     $matkul         = mysqli_fetch_row(mysqli_query($link, $sql_matkul));
     $mahasiswa      = mysqli_fetch_row(mysqli_query($link, $sql_mahasiswa));
-
+    $result         = mysqli_query($link, $sql_kelamin);
+    
+    $kelamin = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $jenis_kelamin = $row['jenis_kelamin'];
+        $total_count = $row['total_count'];
+        $kelamin[$jenis_kelamin] = $total_count;
+    }
 
     echo "
     <div class='pesan'>
@@ -69,12 +77,20 @@ if (isset($_SESSION['userID'])) {
                 <td>:Universitas Tanjungpura</td>
             </tr>
             <tr>
+                <td><p>Total Matakuliah</p></td>
+                <td>:$matkul[0]</td>
+            </tr>
+            <tr>
                 <td><p>Total Mahasiswa</p></td>
                 <td>:$mahasiswa[0]</td>
             </tr>
             <tr>
-                <td><p>Total Matakuliah</p></td>
-                <td>:$matkul[0]</td>
+                <td><p>Jenis Kelamin</p></td>
+                <td>:Pria(" . $kelamin['Pria'] . ")
+            </tr>
+            <tr>
+                <td></td>
+                <td>:Wanita(" . $kelamin['Wanita'] . ")</td>
             </tr>";
     } else {
         echo "
