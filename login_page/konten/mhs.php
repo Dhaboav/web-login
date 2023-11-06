@@ -155,7 +155,7 @@ if (isset($_POST['simpan'])) {
                 </td>
             </tr>";
                     } else {
-                        if ($data['nama'] == $userID) {
+                        if ($data['nim'] == $userID) {
                             echo "
             <tr>
                 <td>{$data['nim']}</td>
@@ -196,7 +196,7 @@ if (isset($_POST['simpan'])) {
                     <td><input type='text' name='nim' value='{$data['nim']}'></td>
                 </tr>
                 <tr>
-                    <td>NAMA</td>
+                    <td>Nama</td>
                     <td><input type='text' name='nama' value='{$data['nama']}'></td>
                 </tr>
                 <tr>
@@ -224,7 +224,7 @@ if (isset($_POST['simpan'])) {
                     <td><input type='text' name='nim'></td>
                 </tr>
                 <tr>
-                    <td>NAMA</td>
+                    <td>Nama</td>
                     <td><input type='text' name='nama'></td>
                 </tr>
                 <tr>

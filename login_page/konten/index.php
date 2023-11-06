@@ -38,7 +38,7 @@ if (isset($_SESSION['userID'])) {
 
     <?php
     $link           = mysqli_connect('localhost', 'root', '12345678', 'uas');
-    $sql            = "SELECT * FROM mahasiswa WHERE nama='$userID'";
+    $sql            = "SELECT * FROM mahasiswa WHERE nim='$userID'";
     $sql_matkul     = "SELECT COUNT(id_matakuliah) FROM mata_kuliah";
     $sql_mahasiswa  = "SELECT COUNT(nim) FROM mahasiswa";
     $sql_kelamin    = "SELECT jenis_kelamin, COUNT(*) AS total_count FROM mahasiswa GROUP BY jenis_kelamin";
@@ -54,16 +54,14 @@ if (isset($_SESSION['userID'])) {
         $kelamin[$jenis_kelamin] = $total_count;
     }
 
-    echo "
+    if ($userID == 'Adminstrator') {
+        echo "
     <div class='pesan'>
         <h3>Selamat Datang, $userID</h3>
     </div>
     <div class='mahasiswa'> 
         <img src='user.png' alt='user' width='190'>
         <table>
-    ";
-    if ($userID == 'Adminstrator') {
-        echo "
             <tr>
                 <td><p>Nama</p></td>
                 <td>:$userID</td>
@@ -94,6 +92,12 @@ if (isset($_SESSION['userID'])) {
             </tr>";
     } else {
         echo "
+    <div class='pesan'>
+        <h3>Selamat Datang, $data[1]</h3>
+    </div>
+    <div class='mahasiswa'> 
+        <img src='user.png' alt='user' width='190'>
+        <table>
             <tr>
                 <td><p>Nama</p></td>
                 <td>:$data[1]</td>
