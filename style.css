@@ -9,6 +9,8 @@
 
 html {font-size: 10px;}
 body {
+    display: flex;
+    column-gap: 2rem;
     width: 100%;
     height: 100vh;
     background-image: url(bg2.jpg);
@@ -87,3 +89,44 @@ nav {padding: 0 1.5rem;}
 
 .menu p {font-size: 1.5rem;}
 /* --------------------------------------------------------------- */
+
+/* main */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 1.5rem;
+    width: 100%;
+    height: 100%;
+    background: #0000004c;
+    backdrop-filter: blur(1.5rem);
+    border-right: 0.1rem solid rgba(255, 255, 255, 0.219);
+}
+
+/* Bagian dash */
+.user-dashboard {
+    height: 30rem;
+    padding: 3rem;
+}
+
+#first-msg {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.data {
+    display: flex;
+    height: 19rem;
+}
+
+.data #img-user {
+    font-size: 20rem;
+    margin: auto 0;
+    color: white;
+}
+
+.data table {
+    font-size: 2rem;
+    color: white;
+}
