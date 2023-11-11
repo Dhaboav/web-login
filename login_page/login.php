@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['userID'])) {
-    header('Location: konten/index.php');
+    header('Location: uji/index.php');
     exit;
 }
 ?>
@@ -13,14 +13,14 @@ if (isset($_POST['login'])) {
 
     if ($user == 'admin' or $psw == 'admin') {
         $_SESSION['userID'] = "Adminstrator";
-        header('Location: konten/index.php');
+        header('Location: uji/index.php');
         exit;
     } else {
         $sql = "SELECT count(*) FROM mahasiswa WHERE nim = '$user' AND nama = '$psw'";
         $data = mysqli_fetch_row(mysqli_query($link, $sql));
         if ($data[0] != 0) {
             $_SESSION['userID'] = "$user";
-            header('Location: konten/index.php');
+            header('Location: uji/index.php');
             exit;
         } else {
             $_SESSION['error'] = "Invalid username or password";
