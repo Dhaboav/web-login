@@ -38,7 +38,6 @@ if (isset($_POST['simpan'])) {
 ?>
 
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,15 +49,39 @@ if (isset($_POST['simpan'])) {
 </head>
 
 <body>
-    <div class="header">
-        <h1>UAS</h1>
-        <div class="links">
-            <a href="index.php">Home</a>
-            <a href="mhs.php">Mahasiswa</a>
-            <a href="matkul.php">Matakuliah</a>
-            <a href="?logout=1">Logout</a>
+    <header>
+        <div class="user">
+            <i id="profile-img" class='bx bx-user'></i>
+            <?php echo "<h2>$userID</h2>"; ?>
         </div>
-    </div>
+        <nav>
+            <a href="index.php">
+                <span class="menu">
+                    <i class='bx bx-home-alt-2'></i>
+                    <p>Home</p>
+                </span>
+            </a>
+            <a href="mhs.php">
+                <span class="menu">
+                    <i class='bx bxs-book-content'></i>
+                    <p>Mahasiswa</p>
+                </span>
+            </a>
+            <a href="matkul.php">
+                <span class="menu">
+                    <i class='bx bxs-book-content'></i>
+                    <p>Matakuliah</p>
+                </span>
+            </a>
+        </nav>
+        <a href="?logout=1">
+            <span class="menu">
+                <i class='bx bx-log-out'></i>
+                <p>Logout</p>
+            </span>
+        </a>
+    </header>
+    
     <div class="table_header">
         <table>
             <?php
@@ -78,7 +101,8 @@ if (isset($_POST['simpan'])) {
                 <th>Nama</th>
                 <th>Sks</th>
                 <th>Dosen</th>
-            </tr>";}
+            </tr>";
+            }
             ?>
         </table>
     </div>
@@ -174,11 +198,11 @@ if (isset($_POST['simpan'])) {
                 </tr>
             </table>
         </form>
-    </div>";}
+    </div>";
+        }
     ?>
     <?php
     }
     ?>
 </body>
-
 </html>
