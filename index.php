@@ -30,30 +30,29 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-<html lang="id">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css\login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-    <div class="login-container">
-
-        <?php
-        if (isset($_GET['error']) && $_GET['error'] == 1) {
-            echo '<p>Invalid username or password</p>';
-        }
-        ?>
-
+    <div class="login-box">
         <form action="" method="post">
-            <input type="text" name="userID" placeholder="Username" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
-            <button type="submit" name="login">LOGIN</button>
+            <h1>UAS</h1>
+            <div class="input-box">
+                <input type="text" name="userID" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i> 
+            </div>
+            <button type="submit" name="login">Log In</button>
         </form>
     </div>
 </body>
-
 </html>
