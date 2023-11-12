@@ -90,6 +90,32 @@ if (isset($_POST['simpan'])) {
         }
         .matakuliah-data td a {color: white;}
         .matakuliah-data td a:hover {color: blue;}
+
+        /* form */
+        .form-matakuliah {
+            border: .5rem solid white;
+            border-radius: 3rem;
+            width: 40rem;
+            padding: 1.5rem;
+            font-size: 2rem;
+            color: white;
+            box-sizing: border-box;
+            margin-top: 1rem;
+        }
+        .form-matakuliah td {color: white;}
+        .form-matakuliah input {margin:.5rem 0;}
+        .form-matakuliah input[type="submit"] {
+            width: 6rem;
+            padding: .5rem;
+            display: block;
+            margin: 1rem auto 0;
+            border-radius: 2rem;
+            border: none;
+        }
+        .form-matakuliah input[type="submit"]:hover {
+            background-color: black;
+            color: white;
+        }
     </style>
 </head>
 
@@ -179,73 +205,67 @@ if (isset($_POST['simpan'])) {
                     ?>
                 </table>
             </div>
+            <?php 
+            if (isset($_GET['ubah'])) {
+                $id = $_GET['kode'];
+                $sql = "SELECT * FROM mata_kuliah WHERE id_matakuliah='$id'";
+                $data = mysqli_fetch_assoc(mysqli_query($link, $sql));
+                echo "
+            <div class='form-matakuliah'>
+                <form action='matkul.php' method='POST'>
+                    <table>
+                        <tr>
+                            <td>Kode</td>
+                            <td><input type='text' name='id-kelas' value='{$data['id_matakuliah']}'></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Matakuliah</td>
+                            <td><input type='text' name='nama' value='{$data['nama_matakuliah']}'></td>
+                        </tr>
+                        <tr>
+                            <td>Sks</td>
+                            <td><input type='number' name='sks' value='{$data['sks']}'></td>
+                        </tr>
+                        <tr>
+                            <td>Dosen</td>
+                            <td><input type='text' name='dosen' value='{$data['dosen_pengampu']}'></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'><input type='submit' name='edit' value='Simpan'></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>";} else {
+                if ($userID == 'Adminstrator') {
+                    echo "
+            <div class='form-matakuliah'>
+                <form action='matkul.php' method='POST'>
+                    <table>
+                        <tr>
+                            <td>Kode</td>
+                            <td><input type='text' name='id-kelas'></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Matakuliah</td>
+                            <td><input type='text' name='nama'></td>
+                        </tr>
+                        <tr>
+                            <td>Sks</td>
+                            <td><input type='number' name='sks'></td>
+                        </tr>
+                        <tr>
+                            <td>Dosen</td>
+                            <td><input type='text' name='dosen'></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>";}
+            }
+            ?>
         </section>
     </main>
-    
-    <!-- older -->
-    <?php
-    if (isset($_GET['ubah'])) {
-        $id = $_GET['kode'];
-        $sql = "SELECT * FROM mata_kuliah WHERE id_matakuliah='$id'";
-        $data = mysqli_fetch_assoc(mysqli_query($link, $sql));
-        echo "
-    <div class='form_matakuliah'>
-        <form action='matkul.php' method='POST'>
-            <table>
-                <tr>
-                    <td>Kode</td>
-                    <td><input type='text' name='id-kelas' value='{$data['id_matakuliah']}'></td>
-                </tr>
-                <tr>
-                    <td>Nama</td>
-                    <td><input type='text' name='nama' value='{$data['nama_matakuliah']}'></td>
-                </tr>
-                <tr>
-                    <td>Sks</td>
-                    <td><input type='number' name='sks' value='{$data['sks']}'></td>
-                </tr>
-                <tr>
-                    <td>Dosen</td>
-                    <td><input type='text' name='dosen' value='{$data['dosen_pengampu']}'></td>
-                </tr>
-                <tr>
-                    <td colspan='2'><input type='submit' name='edit' value='Simpan'></td>
-                </tr>
-            </table>
-        </form>
-    </div>";
-    } else {
-        if ($userID == 'Adminstrator') {
-            echo "
-    <div class='form_matakuliah'>
-        <form action='matkul.php' method='POST'>
-            <table>
-                <tr>
-                    <td>Kode</td>
-                    <td><input type='text' name='id-kelas'></td>
-                </tr>
-                <tr>
-                    <td>Nama</td>
-                    <td><input type='text' name='nama'></td>
-                </tr>
-                <tr>
-                    <td>Sks</td>
-                    <td><input type='number' name='sks'></td>
-                </tr>
-                <tr>
-                    <td>Dosen</td>
-                    <td><input type='text' name='dosen'></td>
-                </tr>
-                <tr>
-                    <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
-                </tr>
-            </table>
-        </form>
-    </div>";
-        }
-    ?>
-    <?php
-    }
-    ?>
 </body>
 </html>
