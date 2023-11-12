@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['userID'])) {
-    header('Location: uji/index.php');
+    header('Location: index.php');
     exit;
 }
 ?>
@@ -13,14 +13,14 @@ if (isset($_POST['login'])) {
 
     if ($user == 'admin' or $psw == 'admin') {
         $_SESSION['userID'] = "Adminstrator";
-        header('Location: uji/index.php');
+        header('Location: index.php');
         exit;
     } else {
         $sql = "SELECT count(*) FROM mahasiswa WHERE nim = '$user' AND nama = '$psw'";
         $data = mysqli_fetch_row(mysqli_query($link, $sql));
         if ($data[0] != 0) {
             $_SESSION['userID'] = "$user";
-            header('Location: uji/index.php');
+            header('Location: index.php');
             exit;
         } else {
             $_SESSION['error'] = "Invalid username or password";
@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="..\css\login.css">
 </head>
 
 <body>

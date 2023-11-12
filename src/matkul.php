@@ -5,14 +5,14 @@ $link = mysqli_connect('localhost', 'root', '12345678', 'uas');
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    header('Location: ../login.php');
+    header('Location: login.php');
     exit;
 }
 
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
 } else {
-    header('Location: ../login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -43,71 +43,9 @@ if (isset($_POST['simpan'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mata Kuliah</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="..\css\content.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        /* Bagian Header */
-        .table_header {
-            display: flex;
-            text-align: center;
-            padding: 20px 0px;
-            margin-top: 10px;
-        }
-
-        .table_header table {
-            font-family: 'Courier New', Courier, monospace;
-            border-collapse: collapse;
-            width: 100%;
-            table-layout: fixed;
-            background-color: blueviolet;
-        }
-
-        .table_header th {
-            padding: 20px;
-            background-color: blue;
-            color: aliceblue;
-        }
-
-        /* Bagian Isi */
-        .data_matkul {
-            display: flex;
-            text-align: center;
-            padding: 20px 0px;
-            max-height: 200px;
-            overflow-y: auto;
-            margin-top: -20px;
-        }
-
-        .data_matkul table {
-            font-family: 'Courier New', Courier, monospace;
-            border-collapse: collapse;
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        .data_matkul td {border: 1px solid black;}
-        .data_matkul a {
-            text-decoration: none;
-            color: blue;
-        }
-
-        .data_matkul a:hover {
-            text-decoration: none;
-            color: red;
-        }
-
-        .centered_cell {
-            text-align: center;
-            vertical-align: middle;
-            padding: 0px 10px;
-        }
-
-        /* Form */
-        .form_matakuliah {
-            margin: 10px auto;
-            border: 5px solid black;
-            width: 400px;
-            padding: 15px;
-        }
     </style>
 </head>
 

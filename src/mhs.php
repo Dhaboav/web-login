@@ -5,14 +5,14 @@ $link = mysqli_connect('localhost', 'root', '12345678', 'uas');
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    header('Location: ../login.php');
+    header('Location: login.php');
     exit;
 }
 
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
 } else {
-    header('Location: ../login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -43,7 +43,7 @@ if (isset($_POST['simpan'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahasiswa</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="..\css\content.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         /* Mahasiswa Page*/
@@ -78,7 +78,7 @@ if (isset($_POST['simpan'])) {
         /* Data */
         .mahasiswa-data {
             width: 100%;
-            height: 30rem;
+            height: 40rem;
             overflow-y: auto;
         }
         .mahasiswa-data::-webkit-scrollbar {width: .2rem;}
@@ -92,6 +92,32 @@ if (isset($_POST['simpan'])) {
         }
         .mahasiswa-data td a {color: white;}
         .mahasiswa-data td a:hover {color: blue;}
+        
+        /* form */
+        .form-mahasiswa {
+            border: .5rem solid white;
+            border-radius: 3rem;
+            width: 40rem;
+            padding: 1.5rem;
+            font-size: 2rem;
+            color: white;
+            box-sizing: border-box;
+            margin-top: 1rem;
+        }
+        .form-mahasiswa td {color: white;}
+        .form-mahasiswa input {margin:.5rem 0;}
+        .form-mahasiswa input[type="submit"] {
+            width: 6rem;
+            padding: .5rem;
+            display: block;
+            margin: 1rem auto 0;
+            border-radius: 2rem;
+            border: none;
+        }
+        .form-mahasiswa input[type="submit"]:hover {
+            background-color: black;
+            color: white;
+        }
     </style>
 </head>
 
@@ -181,6 +207,66 @@ if (isset($_POST['simpan'])) {
                     ?>
                 </table>
             </div>
+            <?php 
+            if (isset($_GET['ubah'])) {
+                $id = $_GET['kode'];
+                $sql = "SELECT * FROM mahasiswa WHERE nim='$id'";
+                $data = mysqli_fetch_assoc(mysqli_query($link, $sql));
+                echo "
+            <div class='form-mahasiswa'>
+                <form action='mhs.php' method='POST'>
+                    <table>
+                        <tr>
+                            <td>NIM</td>
+                            <td><input type='text' name='nim' value='{$data['nim']}'></td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td><input type='text' name='nama' value='{$data['nama']}'></td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Kelamin</td>
+                            <td><input type='text' name='jenis-kelamin' value='{$data['jenis_kelamin']}'></td>
+                        </tr>
+                        <tr>
+                            <td>Nomor Telp</td>
+                            <td><input type='number' name='no-tlp' value='{$data['no_hp']}'></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'><input type='submit' name='edit' value='Simpan'></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>";} else {
+                if ($userID == 'Adminstrator') {
+                    echo "
+            <div class='form-mahasiswa'>
+                <form action='mhs.php' method='POST'>
+                    <table>
+                        <tr>
+                            <td>NIM</td>
+                            <td><input type='text' name='nim'></td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td><input type='text' name='nama'></td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Kelamin</td>
+                            <td><input type='text' name='jenis-kelamin'></td>
+                        </tr>
+                        <tr>
+                            <td>Nomor Telp</td>
+                            <td><input type='number' name='no-tlp'></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'><input type='submit' name='simpan' value='Simpan'></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>";}
+            }
+            ?>
         </section>
     </main>
 </body>

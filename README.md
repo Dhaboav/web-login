@@ -51,24 +51,24 @@ Dashboard Sample:
 ### File Structure
 Here is the file structure of this repository
 ```
-.  
+. 
+├── css
+|   |
+|   ├── content.css
+|   └── login.css
+|
 ├── img
 |   |
+|   ├── bg.jpg
 |   ├── dashboard.png
 |   └── login.png
 |
-├── login_page  
+├── src  
 |   |
-|   ├── konten
-|   |   |
-|   |   ├── index.php
-|   |   ├── matkul.php
-|   |   ├── mhs.php
-|   |   ├── style.css
-|   |   └── user.png
-|   │
+|   ├── index.php
 |   ├── login.php
-|   └── login.css
+|   ├── matkul.php
+|   └── mhs.php
 |
 └── README.md
 ```
@@ -108,7 +108,7 @@ Here is the file structure of this repository
 
 5. Run in your localhost
   ```localhost
-   http://localhost/web-personal/login_page/login.php
+   http://localhost/web-personal/src/login.php
   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

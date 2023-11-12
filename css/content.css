@@ -6,19 +6,18 @@
     text-decoration: none;
     font-family:sans-serif;
 }
+
 html {font-size: 10px;}
 body {
     display: flex;
     column-gap: 2rem;
     width: 100%;
     height: 100vh;
-    background-image: url(bg2.jpg);
+    background-image: url('../img/bg.jpg');
     background-position: center;
     background-size: cover;
 }
 
-
-/* Sidebar Nav */
 header {
     display: flex;
     flex-direction: column;
@@ -30,6 +29,7 @@ header {
     backdrop-filter: blur(.5rem);
     border-right: 0.1rem solid rgba(255, 255, 255, 0.219);
 }
+/* --------------------------------------------------------------- */
 
 /* User profile */
 .user {
@@ -44,18 +44,21 @@ header {
     margin: 0 auto;
     color: white;
 }
+
 #profile-img {
     margin: auto;
     font-size: 6rem;
     color: white;
     transition: 0.3s ease;
 }
+
 #profile-img:hover {transform: scale(1.2);}
 .user h2 {
     font-size: 2rem;
     font-weight: 600;
     margin: 1rem;
 }
+/* --------------------------------------------------------------- */
 
 /* Menu + logout */
 nav {padding: 0 1.5rem;}
@@ -71,20 +74,23 @@ nav {padding: 0 1.5rem;}
     border-radius: 3rem;
     transition: 0.3s ease;
 }
+
 .menu:hover {
     border: .2rem solid white;
     border-radius: 3rem;
     background-color: white;
     color: black;
 }
+
 .menu i {
     width: 3rem;
     font-size: 2.8rem;
 }
+
 .menu p {font-size: 1.5rem;}
+/* --------------------------------------------------------------- */
 
-
-/* Main Section */
+/* main */
 main {
     display: flex;
     flex-direction: column;
@@ -97,72 +103,30 @@ main {
     border-right: 0.1rem solid rgba(255, 255, 255, 0.219);
 }
 
-/* Home Page */
+/* Bagian dash */
 .user-dashboard {
     height: 30rem;
     padding: 3rem;
 }
+
 #first-msg {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     color: white;
 }
+
 .data {
     display: flex;
     height: 19rem;
 }
+
 .data #img-user {
     font-size: 20rem;
     margin: auto 0;
     color: white;
 }
+
 .data table {
     font-size: 2rem;
     color: white;
 }
-
-
-/* Mahasiswa Page*/
-.mahasiswa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.mahasiswa table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 0.1rem;
-}
-
-/* header */
-.mahasiswa-header {
-    border-collapse: collapse;
-    border-radius: 3rem;
-    overflow: hidden;
-}
-.mahasiswa-header th {
-    width: 20%;
-    padding: .8rem; 
-    text-align: center;
-    font-size: 2rem;
-    color: black;
-    background-color: white; 
-}
-
-/* Data */
-.mahasiswa-data {
-    width: 100%;
-    height: 30rem;
-    overflow-y: auto;
-}
-.mahasiswa-data::-webkit-scrollbar {width: .2rem;}
-.mahasiswa-data::-webkit-scrollbar-thumb {background-color: #b1b1b121}
-.mahasiswa-data td {
-    width: 20%; 
-    padding: .8rem; 
-    font-size: 1.5rem;
-    text-align: center;
-    color: white;
-}
-.mahasiswa-data td a{color: white;}
-.mahasiswa-data td a:hover{color: blue;}
