@@ -38,11 +38,13 @@
 ## About The Project
 This repository is making simple login system that have some feature like chain login session and logout and show table. And create using `HTML`, `CSS`, `PHP` with `MySQL`
 
+[Background Source](https://www.zerochan.net/3584651)
+
 Login Sample:
 ![Sample Login](https://github.com/Dhaboav/web-login/blob/main/img/login.png)
 
-Dashboard Sample:
-![Sample Dashboard](https://github.com/Dhaboav/web-login/blob/main/img/dashboard.png)
+Home Sample:
+![Sample Dashboard](https://github.com/Dhaboav/web-login/blob/main/img/home.png)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
