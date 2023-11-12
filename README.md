@@ -38,14 +38,16 @@
 ## About The Project
 This repository is making simple login system that have some feature like chain login session and logout and show table. And create using `HTML`, `CSS`, `PHP` with `MySQL`
 
-[Background Source](https://www.zerochan.net/3584651)
-
 Login Sample:
 ![Sample Login](https://github.com/Dhaboav/web-login/blob/main/img/login.png)
 
 Home Sample:
 ![Sample Dashboard](https://github.com/Dhaboav/web-login/blob/main/img/home.png)
 
+
+Image Source:
+[Login Background Source](https://wall.alphacoders.com/big.php?i=971943)
+[Home Background Source](https://www.zerochan.net/3584651)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -63,15 +65,16 @@ Here is the file structure of this repository
 |   |
 |   ├── bg.jpg
 |   ├── home.png
-|   └── login.png
+|   ├── login.png
+|   └── loginbg.png
 |
 ├── src  
 |   |
-|   ├── index.php
-|   ├── login.php
+|   ├── home.php
 |   ├── matkul.php
 |   └── mhs.php
 |
+├── index.php
 └── README.md
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -120,7 +123,9 @@ Here is the file structure of this repository
 ## Feature
 
 - Simple Login System (Chain session login and logout) with MySQL database.
+- Simple error message in wrong username or password.
 - Simple Dashboard to show table in database.
+- Can edit and delete for admin. And only see and edit for unique id.
 
 See the [open issues](https://github.com/Dhaboav/web-login/issues) for a full list of proposed features (and known issues).
 
