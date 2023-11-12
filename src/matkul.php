@@ -45,6 +45,51 @@ if (isset($_POST['simpan'])) {
     <link rel="stylesheet" href="..\css\content.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        html {font-size: 10px;}
+        .matakuliah {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .matakuliah table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0.1rem;
+        }
+
+        /* header */
+        .matakuliah-header {
+            border-collapse: collapse;
+            border-radius: 3rem;
+            overflow: hidden;
+        }
+        .matakuliah-header th {
+            width: 20%;
+            padding: .8rem;
+            text-align: center;
+            font-size: 2rem;
+            color: black;
+            background-color: white;
+        }
+
+        /* Data */
+        .matakuliah-data {
+            width: 100%;
+            height: 40rem;
+            overflow-y: auto;
+        }
+        .matakuliah-data::-webkit-scrollbar {width: .2rem;}
+        .matakuliah-data::-webkit-scrollbar-thumb {background-color: #b1b1b181;}
+        .matakuliah-data td {
+            width: 20%;
+            padding: .8rem;
+            font-size: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+        .matakuliah-data td a {color: white;}
+        .matakuliah-data td a:hover {color: blue;}
     </style>
 </head>
 
@@ -81,65 +126,63 @@ if (isset($_POST['simpan'])) {
             </span>
         </a>
     </header>
-    
-    <div class="table_header">
-        <table>
-            <?php
-            if ($userID == 'Adminstrator') {
-                echo "
-            <tr>
-                <th>Kode</th>
-                <th>Nama</th>
-                <th>Sks</th>
-                <th>Dosen</th>
-                <th>Editor</th>
-            </tr>";
-            } else {
-                echo "
-            <tr>
-                <th>Kode</th>
-                <th>Nama</th>
-                <th>Sks</th>
-                <th>Dosen</th>
-            </tr>";
-            }
-            ?>
-        </table>
-    </div>
-    <div class="data_matkul">
-        <table>
-            <?php
-            $sql = "SELECT * FROM mata_kuliah";
-            $result = mysqli_query($link, $sql);
-
-            if ($result) {
-                while ($data = mysqli_fetch_assoc($result)) {
-                    if ($userID == 'Adminstrator') {
+    <main>
+        <section class="matakuliah">
+            <table class="matakuliah-header">
+                <?php 
+                if ($userID == 'Adminstrator') {
+                    echo "
+                <tr>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>SKS</th>
+                    <th>Dosen</th>
+                    <th>Editor</th>
+                </tr>";} else {
+                    echo "
+                <tr>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>SKS</th>
+                    <th>Dosen</th>
+                </tr>";}
+                ?>
+            </table>
+            <div class="matakuliah-data">
+                <table>
+                    <?php 
+                    $sql = "SELECT * FROM mata_kuliah";
+                    $result = mysqli_query($link, $sql);
+                    if ($result){
+                        while ($data = mysqli_fetch_assoc($result)) {
+                            if ($userID == 'Adminstrator'){
+                                echo "
+                    <tr>
+                        <td>{$data['id_matakuliah']}</td>
+                        <td>{$data['nama_matakuliah']}</td>
+                        <td>{$data['sks']}</td>
+                        <td>{$data['dosen_pengampu']}</td>
+                        <td>
+                            <a href='matkul.php?ubah&kode={$data['id_matakuliah']}'>EDIT</a>
+                            <a href='matkul.php?hapus&id={$data['id_matakuliah']}'>DELETE</a>
+                        </td>
+                    </tr>";} else {
                         echo "
-            <tr>
-                <td>{$data['id_matakuliah']}</td>
-                <td>{$data['nama_matakuliah']}</td>
-                <td>{$data['sks']}</td>
-                <td>{$data['dosen_pengampu']}</td>
-                <td class='centered_cell'>
-                    <a href='matkul.php?ubah&kode={$data['id_matakuliah']}'>Edit</a>
-                    <a href='matkul.php?hapus&id={$data['id_matakuliah']}'>Delete</a>
-                </td>
-            </tr>";
-                    } else {
-                        echo "
-            <tr>
-                <td>{$data['id_matakuliah']}</td>
-                <td>{$data['nama_matakuliah']}</td>
-                <td>{$data['sks']}</td>
-                <td>{$data['dosen_pengampu']}</td>
-            </tr>";
+                    <tr>
+                        <td>{$data['id_matakuliah']}</td>
+                        <td>{$data['nama_matakuliah']}</td>
+                        <td>{$data['sks']}</td>
+                        <td>{$data['dosen_pengampu']}</td>
+                    </tr>";}
+                        }
                     }
-                }
-            }
-            ?>
-        </table>
-    </div>
+                    ?>
+                </table>
+            </div>
+        </section>
+    </main>
+    
+    <!-- older -->
     <?php
     if (isset($_GET['ubah'])) {
         $id = $_GET['kode'];
