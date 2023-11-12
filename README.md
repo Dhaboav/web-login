@@ -46,7 +46,9 @@ Home Sample:
 
 
 Image Source:
+<br>
 [Login Background Source](https://wall.alphacoders.com/big.php?i=971943)
+<br>
 [Home Background Source](https://www.zerochan.net/3584651)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -113,7 +115,7 @@ Here is the file structure of this repository
 
 5. Run in your localhost
   ```localhost
-   http://localhost/web-personal/src/login.php
+   http://localhost/web-personal/index.php
   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
