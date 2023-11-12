@@ -10,7 +10,6 @@ $link = mysqli_connect('localhost', 'root', '12345678', 'uas');
 if (isset($_POST['login'])) {
     $user = trim($_POST['userID']);
     $psw = trim($_POST['password']);
-    echo "$user, $psw";
 
     if ($user == 'admin' or $psw == 'admin') {
         $_SESSION['userID'] = "Adminstrator";
@@ -44,18 +43,36 @@ if (isset($_POST['login'])) {
 
 <body>
     <div class="login-box">
-        <form action="index.php" method="post">
+        <form action="" method="post">
             <h1>UAS</h1>
-            <input type="text" name="userID" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <!-- <div class="input-box">
-                
+            <?php
+                if (isset($_GET['error']) && $_GET['error'] == 1) {
+                    echo "
+            <div class='error-box'>
+                <input type='text' name='userID' placeholder='Username' required>
                 <i class='bx bxs-user'></i>
             </div>
-            <div class="input-box">
-               
+            <div class='error-box'>
+                <input type='password' name='password' placeholder='Password' required>
                 <i class='bx bxs-lock-alt'></i>
-            </div> -->
+                <div class='error-msg'>
+                    <i class='bx bxs-error-circle'></i>
+                    <p>Username atau Password salah</p>
+                </div>
+            </div>
+                
+                ";} else {
+                    echo "
+            <div class='input-box'>
+                <input type='text' name='userID' placeholder='Username' required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class='input-box'>
+                <input type='password' name='password' placeholder='Password' required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>";}
+            ?>
+
             <button type="submit" name="login">Log In</button>
         </form>
     </div>

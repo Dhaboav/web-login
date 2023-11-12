@@ -77,3 +77,52 @@ body {
     background-color: blue;
     color: white;
 }
+
+
+/* Login Error */
+.login-box .error-box {
+    width: 100%;
+    height: 3rem;
+    margin: 3rem 0;
+    text-align: center;
+    justify-content: center;
+}
+.error-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: .2rem solid red;
+    outline: none;
+    padding: .5rem;
+    color: white;
+}
+.error-box input::placeholder{color: red;}
+.error-box input:focus {border-bottom: .2rem solid white; }
+.error-box i {
+    font-size: 2rem;
+    position: absolute;
+    transform: translateY(.5rem);
+    right: 2rem;
+    color: red;
+}
+.error-box input:focus + i{color: white;}
+.error-box input:focus::placeholder{color: white;}
+
+.error-msg {margin: 1rem 0;}
+.error-msg p{
+    margin: .5rem 0;
+    color: red;
+    text-align: left;
+    margin-left: 3rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.error-msg i {
+    font-size: 2rem;
+    position: absolute;
+    transform: translateY(-.2rem);
+    left: -20.5rem;
+    color: red;
+}
