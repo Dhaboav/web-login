@@ -4,14 +4,14 @@ session_start();
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    header('Location: login.php');
+    header('Location: ../index.php');
     exit;
 }
 
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
 } else {
-    header('Location: login.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>
@@ -32,7 +32,7 @@ if (isset($_SESSION['userID'])) {
             <?php echo "<h2>$userID</h2>";?>
         </div>
         <nav>
-            <a href="index.php">
+            <a href="home.php">
                 <span class="menu">
                     <i class='bx bx-home-alt-2'></i>
                     <p>Home</p>
