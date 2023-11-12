@@ -62,7 +62,7 @@ Here is the file structure of this repository
 ├── img
 |   |
 |   ├── bg.jpg
-|   ├── dashboard.png
+|   ├── home.png
 |   └── login.png
 |
 ├── src  
