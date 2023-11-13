@@ -1,3 +1,4 @@
+<!-- Version 2.0 -->
 <?php session_start();
 if (isset($_SESSION['userID'])) {
     header('Location: src\home.php');

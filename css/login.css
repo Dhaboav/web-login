@@ -1,3 +1,5 @@
+/* ------------------------- Version 2.0 ---------------------------- */
+/* Setting */
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +28,7 @@ body {
     backdrop-filter: blur(.5rem);
     border: .2rem solid rgba(255, 255, 255, 0.589);
     border-radius: 3rem;
-    box-shadow: 0 0 2rem rgb(255, 0, 0); /* Efek glowing menggunakan box-shadow */
+    box-shadow: 0 0 2rem rgb(255, 0, 0);
 }
 .login-box h1 {
     color: white;
@@ -108,7 +110,6 @@ body {
 }
 .error-box input:focus + i{color: white;}
 .error-box input:focus::placeholder{color: white;}
-
 .error-msg {margin: 1rem 0;}
 .error-msg p{
     margin: .5rem 0;
@@ -118,7 +119,6 @@ body {
     font-size: 1.4rem;
     font-weight: bold;
 }
-
 .error-msg i {
     font-size: 2rem;
     position: absolute;
@@ -126,3 +126,4 @@ body {
     left: -20.5rem;
     color: red;
 }
+/* ------------------------- Version 2.0 ---------------------------- */
