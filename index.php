@@ -12,7 +12,7 @@ if (isset($_POST['login'])) {
     $user = trim($_POST['userID']);
     $psw = trim($_POST['password']);
 
-    if ($user == 'admin' or $psw == 'admin') {
+    if ($user == 'admin' and $psw == 'admin') {
         $_SESSION['userID'] = "Adminstrator";
         header('Location: src\home.php');
         exit;
